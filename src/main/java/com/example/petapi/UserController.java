@@ -4,9 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.petapi.entity.UserDO;
 import com.example.petapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -28,4 +26,29 @@ public class UserController {
     public JSONObject register(UserDO userDO) {
         return Result.Success(userService.register(userDO));
     }
+
+
+    @GetMapping("/v1/users")
+    public JSONObject list(UserDO userDO) {
+        return Result.Success(userService.list(userDO));
+    }
+
+
+    @PostMapping("/v1/user")
+    public JSONObject insert(UserDO userDO) {
+        return Result.Success(userService.insert(userDO));
+    }
+
+
+    @PutMapping("/v1/user")
+    public JSONObject update(UserDO userDO) {
+        return Result.Success(userService.update(userDO));
+    }
+
+    @DeleteMapping("/v1/user")
+    public JSONObject delete(UserDO userDO) {
+        return Result.Success(userService.delete(userDO));
+    }
+
+
 }

@@ -24,16 +24,13 @@ public class MybatisConfig {
 
     @Bean(name = "dataSource")
     public DataSource dataSource() {
-
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setUrl(dataSourceProperties.getUrl());
         System.out.println(dataSourceProperties.getUrl());
         dataSource.setDriverClassName(dataSourceProperties.getDriverClassName());
         dataSource.setUsername(dataSourceProperties.getUsername());
         dataSource.setPassword(dataSourceProperties.getPassword());
-
         return dataSource;
-
     }
 
     public SqlSessionFactory sqlSessionFactory() throws Exception {

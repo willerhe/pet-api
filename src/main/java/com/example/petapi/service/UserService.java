@@ -1,6 +1,5 @@
 package com.example.petapi.service;
 
-import com.alibaba.fastjson.JSONObject;
 import com.example.petapi.Result;
 import com.example.petapi.dao.UserDOMapper;
 import com.example.petapi.entity.UserDO;
@@ -32,7 +31,7 @@ public class UserService {
     }
 
     // 登录
-    public JSONObject login(UserDO userDO) {
+    public Object login(UserDO userDO) {
         UserDOExample e = new UserDOExample();
         UserDOExample.Criteria c = e.createCriteria();
         c.andPasswordEqualTo(userDO.getPassword());
@@ -43,5 +42,27 @@ public class UserService {
         } else {
             return Result.Success(list.get(0));
         }
+    }
+
+
+    public Object list(UserDO userDO) {
+        UserDOExample e = new UserDOExample();
+        UserDOExample.Criteria c = e.createCriteria();
+
+        List<UserDO> list = userDOMapper.selectByExample(e);
+        return Result.Success(list);
+
+    }
+
+    public Object insert(UserDO userDO) {
+        return Result.Success(userDO);
+    }
+
+    public Object update(UserDO userDO) {
+        return Result.Success(userDO);
+    }
+
+    public Object delete(UserDO userDO) {
+        return Result.Success(userDO);
     }
 }
