@@ -25,7 +25,9 @@ public class UserService {
 
     // 注册
     public UserDO register(UserDO userDO) {
+        // todo 查询是否有重复用户
         userDO.setId(UUID.randomUUID().toString());
+        userDO.setIsDeleted(false);
         userDOMapper.insert(userDO);
         return userDOMapper.selectByPrimaryKey(userDO.getId());
     }

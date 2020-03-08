@@ -19,7 +19,7 @@ public class AppointmentController {
 
 
     @PostMapping("/v1/appointment")
-    public JSONObject insert(Appointment appointment) {
+    public JSONObject insert(@RequestBody Appointment appointment) {
         return Result.Success(appointmentService.insert(appointment));
     }
 

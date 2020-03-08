@@ -18,12 +18,12 @@ public class UserController {
     }
 
     @PostMapping("/v1/login")
-    public JSONObject login(UserDO userDO) {
+    public JSONObject login(@RequestBody UserDO userDO) {
         return Result.Success(userService.login(userDO));
     }
 
     @PostMapping("/v1/register")
-    public JSONObject register(UserDO userDO) {
+    public JSONObject register(@RequestBody UserDO userDO) {
         return Result.Success(userService.register(userDO));
     }
 

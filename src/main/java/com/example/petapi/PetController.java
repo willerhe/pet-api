@@ -19,7 +19,7 @@ public class PetController {
 
 
     @PostMapping("/v1/pet")
-    public JSONObject insert(Pet pet) {
+    public JSONObject insert(@RequestBody Pet pet) {
         return Result.Success(petService.insert(pet));
     }
 

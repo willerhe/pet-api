@@ -14,7 +14,7 @@
 
         <!--数据库连接地址账号密码-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://47.103.212.217:3306/pets"
+                        connectionURL="jdbc:mysql://47.103.212.217:3306/petpet"
                         userId="router"
                         password="111111">
         </jdbcConnection>
@@ -48,10 +48,10 @@
 <!--               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
 <!--        </table>-->
 
-<!--        <table tableName="pet" domainObjectName="Pet"-->
-<!--               enableInsert="true" enableUpdateByPrimaryKey="true"-->
-<!--               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
-<!--        </table>-->
+        <table tableName="pet" domainObjectName="Pet"
+               enableInsert="true" enableUpdateByPrimaryKey="true"
+               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">
+        </table>
 
 <!--        <table tableName="role" domainObjectName="Role"-->
 <!--               enableInsert="true" enableUpdateByPrimaryKey="true"-->
