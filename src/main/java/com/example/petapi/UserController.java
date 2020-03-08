@@ -41,7 +41,7 @@ public class UserController {
 
 
     @PutMapping("/v1/user")
-    public JSONObject update(UserDO userDO) {
+    public JSONObject update(@RequestBody UserDO userDO) {
         return Result.Success(userService.update(userDO));
     }
 

@@ -61,6 +61,10 @@ public class UserService {
     }
 
     public Object update(UserDO userDO) {
+        UserDOExample e = new UserDOExample();
+        UserDOExample.Criteria c = e.createCriteria();
+        c.andIdEqualTo(userDO.getId());
+        userDOMapper.updateByExample(userDO,e);
         return Result.Success(userDO);
     }
 
