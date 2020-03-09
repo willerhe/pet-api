@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.petapi.dao.AppointmentMapper">
+
   <resultMap id="BaseResultMap" type="com.example.petapi.entity.Appointment">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
@@ -11,6 +12,8 @@
     <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="pet_id" jdbcType="VARCHAR" property="petId" />
+    <result column="promise_time" jdbcType="VARCHAR" property="promiseTime" />
+    <result column="age" jdbcType="INTEGER" property="age" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,7 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, remark, status, user_name, pet_name, phone_number, is_deleted, user_id, pet_id
+    id, remark, status, user_name, pet_name, phone_number, is_deleted, user_id, pet_id, 
+    promise_time, age
   </sql>
   <select id="selectByExample" parameterType="com.example.petapi.entity.AppointmentExample" resultMap="BaseResultMap">
     select
@@ -106,12 +110,12 @@
   <insert id="insert" parameterType="com.example.petapi.entity.Appointment">
     insert into appointment (id, remark, status, 
       user_name, pet_name, phone_number, 
-      is_deleted, user_id, pet_id
-      )
+      is_deleted, user_id, pet_id, 
+      promise_time, age)
     values (#{id,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
       #{userName,jdbcType=VARCHAR}, #{petName,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
-      #{isDeleted,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{petId,jdbcType=VARCHAR}
-      )
+      #{isDeleted,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{petId,jdbcType=VARCHAR}, 
+      #{promiseTime,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.example.petapi.entity.Appointment">
     insert into appointment
@@ -143,6 +147,12 @@
       <if test="petId != null">
         pet_id,
       </if>
+      <if test="promiseTime != null">
+        promise_time,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -171,6 +181,12 @@
       </if>
       <if test="petId != null">
         #{petId,jdbcType=VARCHAR},
+      </if>
+      <if test="promiseTime != null">
+        #{promiseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -210,6 +226,12 @@
       <if test="record.petId != null">
         pet_id = #{record.petId,jdbcType=VARCHAR},
       </if>
+      <if test="record.promiseTime != null">
+        promise_time = #{record.promiseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.age != null">
+        age = #{record.age,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -225,7 +247,9 @@
       phone_number = #{record.phoneNumber,jdbcType=VARCHAR},
       is_deleted = #{record.isDeleted,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=VARCHAR},
-      pet_id = #{record.petId,jdbcType=VARCHAR}
+      pet_id = #{record.petId,jdbcType=VARCHAR},
+      promise_time = #{record.promiseTime,jdbcType=VARCHAR},
+      age = #{record.age,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -257,6 +281,12 @@
       <if test="petId != null">
         pet_id = #{petId,jdbcType=VARCHAR},
       </if>
+      <if test="promiseTime != null">
+        promise_time = #{promiseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -269,8 +299,11 @@
       phone_number = #{phoneNumber,jdbcType=VARCHAR},
       is_deleted = #{isDeleted,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=VARCHAR},
-      pet_id = #{petId,jdbcType=VARCHAR}
+      pet_id = #{petId,jdbcType=VARCHAR},
+      promise_time = #{promiseTime,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
 
 </mapper>

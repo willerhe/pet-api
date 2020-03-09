@@ -18,6 +18,25 @@ public class Appointment {
     private String userId;
 
     private String petId;
+    private int age;
+
+    private String promiseTime;
+
+    public String getPromiseTime() {
+        return promiseTime;
+    }
+
+    public void setPromiseTime(String promiseTime) {
+        this.promiseTime = promiseTime;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     public String getId() {
         return id;

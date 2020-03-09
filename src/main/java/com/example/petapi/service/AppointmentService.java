@@ -21,6 +21,7 @@ public class AppointmentService {
     public Object list(Appointment appointment) {
         AppointmentExample e = new AppointmentExample();
         AppointmentExample.Criteria c = e.createCriteria();
+        e.setOrderByClause("promise_time desc");
 
         List<Appointment> list = appointmentMapper.selectByExample(e);
         return Result.Success(list);
