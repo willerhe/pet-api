@@ -29,6 +29,12 @@ public class AppointmentController {
         return Result.Success(appointmentService.update(appointment));
     }
 
+
+    @PutMapping("/v1/appointment/confirm")
+    public JSONObject confirm(Appointment appointment) {
+        return Result.Success(appointmentService.confirm(appointment));
+    }
+
     @DeleteMapping("/v1/appointment")
     public JSONObject delete(Appointment appointment) {
         return Result.Success(appointmentService.delete(appointment));

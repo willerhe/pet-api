@@ -4,7 +4,6 @@ import com.example.petapi.Result;
 import com.example.petapi.dao.PetMapper;
 import com.example.petapi.entity.Pet;
 import com.example.petapi.entity.PetExample;
-import com.example.petapi.entity.UserDOExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +16,13 @@ public class PetService {
     PetMapper petMapper;
 
 
-    public Object list(Pet Pet) {
+    public Object list(Pet pet) {
         PetExample e = new PetExample();
         PetExample.Criteria c = e.createCriteria();
         c.andIsDeletedEqualTo(false);
-
+        if(pet.getNickname() != null && pet.getNickname().length() > 0) {
+            c.andNicknameEqualTo(pet.getNickname());
+        }
         List<Pet> list = petMapper.selectByExample(e);
         return Result.Success(list);
 
