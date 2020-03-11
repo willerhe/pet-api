@@ -21,7 +21,7 @@ public class PetService {
         PetExample.Criteria c = e.createCriteria();
         c.andIsDeletedEqualTo(false);
         if(pet.getNickname() != null && pet.getNickname().length() > 0) {
-            c.andNicknameEqualTo(pet.getNickname());
+            c.andNicknameLike(pet.getNickname());
         }
         List<Pet> list = petMapper.selectByExample(e);
         return Result.Success(list);

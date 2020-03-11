@@ -51,7 +51,12 @@ public class UserService {
     public Object list(UserDO userDO) {
         UserDOExample e = new UserDOExample();
         UserDOExample.Criteria c = e.createCriteria();
-
+        if(userDO.getPhoneNumber() != null){
+            c.andPhoneNumberLike(userDO.getPhoneNumber());
+        }
+        if(userDO.getAccount() != null){
+            c.andAccountLike(userDO.getAccount());
+        }
         List<UserDO> list = userDOMapper.selectByExample(e);
         return Result.Success(list);
 
