@@ -60,7 +60,6 @@ public class AppointmentService {
     }
 
     public Object delete(Appointment appointment) {
-
         appointment.setIsDeleted(1);
         AppointmentExample e = new AppointmentExample();
         AppointmentExample.Criteria c = e.createCriteria();

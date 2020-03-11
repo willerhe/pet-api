@@ -6,6 +6,8 @@ import com.example.petapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 public class UserController {
 
@@ -35,7 +37,7 @@ public class UserController {
 
 
     @PostMapping("/v1/user")
-    public JSONObject insert(UserDO userDO) {
+    public JSONObject insert(@RequestBody UserDO userDO) {
         return Result.Success(userService.insert(userDO));
     }
 

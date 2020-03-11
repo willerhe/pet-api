@@ -1,6 +1,7 @@
 package com.example.petapi.service;
 
 import com.example.petapi.Result;
+import com.example.petapi.Strings;
 import com.example.petapi.dao.UserDOMapper;
 import com.example.petapi.entity.UserDO;
 import com.example.petapi.entity.UserDOExample;
@@ -57,6 +58,10 @@ public class UserService {
     }
 
     public Object insert(UserDO userDO) {
+        userDO.setId(UUID.randomUUID().toString());
+        userDO.setNickname("用户" + Strings.getRandomString(10));
+        userDO.setIsDeleted(false);
+        userDOMapper.insert(userDO);
         return Result.Success(userDO);
     }
 
@@ -69,6 +74,8 @@ public class UserService {
     }
 
     public Object delete(UserDO userDO) {
+        userDOMapper.deleteByPrimaryKey(userDO.getId());
+
         return Result.Success(userDO);
     }
 }
