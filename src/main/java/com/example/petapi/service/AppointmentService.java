@@ -7,7 +7,6 @@ import com.example.petapi.dao.PetMapper;
 import com.example.petapi.entity.Appointment;
 import com.example.petapi.entity.AppointmentExample;
 import com.example.petapi.entity.MedicalRecord;
-import com.example.petapi.entity.PetExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,7 +52,15 @@ public class AppointmentService {
         md.setPatientName(appointment.getPetName());
         md.setReason(appointment.getRemark());
         md.setId(UUID.randomUUID().toString());
+        md.setPhoneNumber(appointment.getPhoneNumber());
+        md.setPatientId(appointment.getUserId());
+        md.setIsDeleted(false);
+        md.setStatus(0);
+
         medicalRecordMapper.insert(md);
+
+        appointment.setStatus(1);
+        appointmentMapper.updateByPrimaryKey(appointment);
 
 
         return Result.Success(appointment);

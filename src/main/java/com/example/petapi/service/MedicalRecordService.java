@@ -28,10 +28,13 @@ public class MedicalRecordService {
     }
 
     public Object update(MedicalRecord medicalRecord) {
+        medicalRecordMapper.updateByPrimaryKey(medicalRecord);
+
         return Result.Success(medicalRecord);
     }
 
     public Object delete(MedicalRecord medicalRecord) {
+        medicalRecordMapper.deleteByPrimaryKey(medicalRecord.getId());
         return Result.Success(medicalRecord);
     }
 }

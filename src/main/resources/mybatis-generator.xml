@@ -48,10 +48,10 @@
 <!--               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
 <!--        </table>-->
 
-        <table tableName="pet" domainObjectName="Pet"
-               enableInsert="true" enableUpdateByPrimaryKey="true"
-               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">
-        </table>
+<!--        <table tableName="pet" domainObjectName="Pet"-->
+<!--               enableInsert="true" enableUpdateByPrimaryKey="true"-->
+<!--               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
 
 <!--        <table tableName="role" domainObjectName="Role"-->
 <!--               enableInsert="true" enableUpdateByPrimaryKey="true"-->
@@ -62,6 +62,11 @@
 <!--               enableInsert="true" enableUpdateByPrimaryKey="true"-->
 <!--               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
 <!--        </table>-->
+
+        <table tableName="medical" domainObjectName="Medical"
+               enableInsert="true" enableUpdateByPrimaryKey="true"
+               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">
+        </table>
 
 <!--        <table tableName="goods" domainObjectName="Goods"-->
 <!--               enableInsert="true" enableUpdateByPrimaryKey="true"-->

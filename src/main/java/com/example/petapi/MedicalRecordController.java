@@ -25,7 +25,7 @@ public class MedicalRecordController {
 
 
     @PutMapping("/v1/medicalRecord")
-    public JSONObject update(MedicalRecord medicalRecord) {
+    public JSONObject update(@RequestBody MedicalRecord medicalRecord) {
         return Result.Success(medicalRecordService.update(medicalRecord));
     }
 

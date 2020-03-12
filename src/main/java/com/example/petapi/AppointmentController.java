@@ -31,7 +31,7 @@ public class AppointmentController {
 
 
     @PutMapping("/v1/appointment/confirm")
-    public JSONObject confirm(Appointment appointment) {
+    public JSONObject confirm(@RequestBody Appointment appointment) {
         return Result.Success(appointmentService.confirm(appointment));
     }
 
