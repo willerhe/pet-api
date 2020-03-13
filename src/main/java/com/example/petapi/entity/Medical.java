@@ -15,6 +15,8 @@ public class Medical {
 
     private Integer isDeleted;
 
+    private String no;
+
     public String getId() {
         return id;
     }
@@ -69,5 +71,13 @@ public class Medical {
 
     public void setIsDeleted(Integer isDeleted) {
         this.isDeleted = isDeleted;
+    }
+
+    public String getNo() {
+        return no;
+    }
+
+    public void setNo(String no) {
+        this.no = no == null ? null : no.trim();
     }
 }

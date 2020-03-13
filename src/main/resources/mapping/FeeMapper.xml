@@ -3,12 +3,16 @@
 <mapper namespace="com.example.petapi.dao.FeeMapper">
   <resultMap id="BaseResultMap" type="com.example.petapi.entity.Fee">
     <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="total" jdbcType="REAL" property="total" />
+    <result column="price" jdbcType="REAL" property="price" />
     <result column="type" jdbcType="INTEGER" property="type" />
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
     <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
     <result column="deleted_time" jdbcType="TIMESTAMP" property="deletedTime" />
     <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
+    <result column="prescription_id" jdbcType="VARCHAR" property="prescriptionId" />
+    <result column="method" jdbcType="VARCHAR" property="method" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="medical_name" jdbcType="VARCHAR" property="medicalName" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, total, type, created_time, updated_time, deleted_time, is_deleted
+    id, price, type, created_time, updated_time, deleted_time, is_deleted, prescription_id, 
+    method, remark, medical_name
   </sql>
   <select id="selectByExample" parameterType="com.example.petapi.entity.FeeExample" resultMap="BaseResultMap">
     select
@@ -102,12 +107,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.example.petapi.entity.Fee">
-    insert into fee (id, total, type, 
+    insert into fee (id, price, type, 
       created_time, updated_time, deleted_time, 
-      is_deleted)
-    values (#{id,jdbcType=VARCHAR}, #{total,jdbcType=REAL}, #{type,jdbcType=INTEGER}, 
+      is_deleted, prescription_id, method, 
+      remark, medical_name)
+    values (#{id,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, #{type,jdbcType=INTEGER}, 
       #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP}, #{deletedTime,jdbcType=TIMESTAMP}, 
-      #{isDeleted,jdbcType=INTEGER})
+      #{isDeleted,jdbcType=INTEGER}, #{prescriptionId,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{medicalName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.petapi.entity.Fee">
     insert into fee
@@ -115,8 +122,8 @@
       <if test="id != null">
         id,
       </if>
-      <if test="total != null">
-        total,
+      <if test="price != null">
+        price,
       </if>
       <if test="type != null">
         type,
@@ -133,13 +140,25 @@
       <if test="isDeleted != null">
         is_deleted,
       </if>
+      <if test="prescriptionId != null">
+        prescription_id,
+      </if>
+      <if test="method != null">
+        method,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="medicalName != null">
+        medical_name,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="total != null">
-        #{total,jdbcType=REAL},
+      <if test="price != null">
+        #{price,jdbcType=REAL},
       </if>
       <if test="type != null">
         #{type,jdbcType=INTEGER},
@@ -156,6 +175,18 @@
       <if test="isDeleted != null">
         #{isDeleted,jdbcType=INTEGER},
       </if>
+      <if test="prescriptionId != null">
+        #{prescriptionId,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null">
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalName != null">
+        #{medicalName,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.example.petapi.entity.FeeExample" resultType="java.lang.Long">
@@ -170,8 +201,8 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.total != null">
-        total = #{record.total,jdbcType=REAL},
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=REAL},
       </if>
       <if test="record.type != null">
         type = #{record.type,jdbcType=INTEGER},
@@ -188,6 +219,18 @@
       <if test="record.isDeleted != null">
         is_deleted = #{record.isDeleted,jdbcType=INTEGER},
       </if>
+      <if test="record.prescriptionId != null">
+        prescription_id = #{record.prescriptionId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.method != null">
+        method = #{record.method,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.medicalName != null">
+        medical_name = #{record.medicalName,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -196,12 +239,16 @@
   <update id="updateByExample" parameterType="map">
     update fee
     set id = #{record.id,jdbcType=VARCHAR},
-      total = #{record.total,jdbcType=REAL},
+      price = #{record.price,jdbcType=REAL},
       type = #{record.type,jdbcType=INTEGER},
       created_time = #{record.createdTime,jdbcType=TIMESTAMP},
       updated_time = #{record.updatedTime,jdbcType=TIMESTAMP},
       deleted_time = #{record.deletedTime,jdbcType=TIMESTAMP},
-      is_deleted = #{record.isDeleted,jdbcType=INTEGER}
+      is_deleted = #{record.isDeleted,jdbcType=INTEGER},
+      prescription_id = #{record.prescriptionId,jdbcType=VARCHAR},
+      method = #{record.method,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      medical_name = #{record.medicalName,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -209,8 +256,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.example.petapi.entity.Fee">
     update fee
     <set>
-      <if test="total != null">
-        total = #{total,jdbcType=REAL},
+      <if test="price != null">
+        price = #{price,jdbcType=REAL},
       </if>
       <if test="type != null">
         type = #{type,jdbcType=INTEGER},
@@ -227,17 +274,34 @@
       <if test="isDeleted != null">
         is_deleted = #{isDeleted,jdbcType=INTEGER},
       </if>
+      <if test="prescriptionId != null">
+        prescription_id = #{prescriptionId,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null">
+        method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalName != null">
+        medical_name = #{medicalName,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.petapi.entity.Fee">
     update fee
-    set total = #{total,jdbcType=REAL},
+    set price = #{price,jdbcType=REAL},
       type = #{type,jdbcType=INTEGER},
       created_time = #{createdTime,jdbcType=TIMESTAMP},
       updated_time = #{updatedTime,jdbcType=TIMESTAMP},
       deleted_time = #{deletedTime,jdbcType=TIMESTAMP},
-      is_deleted = #{isDeleted,jdbcType=INTEGER}
+      is_deleted = #{isDeleted,jdbcType=INTEGER},
+      prescription_id = #{prescriptionId,jdbcType=VARCHAR},
+      method = #{method,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      medical_name = #{medicalName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
 </mapper>

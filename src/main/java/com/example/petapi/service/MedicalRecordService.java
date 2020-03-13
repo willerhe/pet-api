@@ -37,4 +37,9 @@ public class MedicalRecordService {
         medicalRecordMapper.deleteByPrimaryKey(medicalRecord.getId());
         return Result.Success(medicalRecord);
     }
+
+    public Object getById(MedicalRecord medicalRecord) {
+        medicalRecord = medicalRecordMapper.selectByPrimaryKey(medicalRecord.getId());
+        return Result.Success(medicalRecord);
+    }
 }

@@ -63,20 +63,25 @@
 <!--               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
 <!--        </table>-->
 
-        <table tableName="medical" domainObjectName="Medical"
-               enableInsert="true" enableUpdateByPrimaryKey="true"
-               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">
-        </table>
+<!--        <table tableName="medical" domainObjectName="Medical"-->
+<!--               enableInsert="true" enableUpdateByPrimaryKey="true"-->
+<!--               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+
+<!--        <table tableName="prescription" domainObjectName="Prescription"-->
+<!--               enableInsert="true" enableUpdateByPrimaryKey="true"-->
+<!--               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
 
 <!--        <table tableName="goods" domainObjectName="Goods"-->
 <!--               enableInsert="true" enableUpdateByPrimaryKey="true"-->
 <!--               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
 <!--        </table>-->
 
-<!--        <table tableName="fee" domainObjectName="Fee"-->
-<!--               enableInsert="true" enableUpdateByPrimaryKey="true"-->
-<!--               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
-<!--        </table>-->
+        <table tableName="fee" domainObjectName="Fee"
+               enableInsert="true" enableUpdateByPrimaryKey="true"
+               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">
+        </table>
 
 <!--        <table tableName="appointment" domainObjectName="Appointment"-->
 <!--               enableInsert="true" enableUpdateByPrimaryKey="true"-->

@@ -29,6 +29,11 @@ public class MedicalController {
         return Result.Success(medicalService.update(medical));
     }
 
+    @GetMapping("/v1/medical")
+    public JSONObject getById( Medical medical) {
+        return Result.Success(medicalService.getById(medical));
+    }
+
     @DeleteMapping("/v1/medical")
     public JSONObject delete(Medical medical) {
         return Result.Success(medicalService.delete(medical));

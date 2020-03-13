@@ -1,6 +1,7 @@
 package com.example.petapi.service;
 
 import com.example.petapi.Result;
+import com.example.petapi.Strings;
 import com.example.petapi.dao.MedicalMapper;
 import com.example.petapi.entity.Medical;
 import com.example.petapi.entity.MedicalExample;
@@ -31,6 +32,7 @@ public class MedicalService {
         medical.setId(UUID.randomUUID().toString());
         medical.setIsDeleted(0);
         medical.setStatus(0);
+        medical.setNo(Strings.getRandomString(10).toUpperCase());
         medicalMapper.insert(medical);
         return Result.Success(medical);
     }
@@ -42,6 +44,12 @@ public class MedicalService {
 
     public Object delete(Medical medical) {
         medicalMapper.deleteByPrimaryKey(medical.getId());
+        return Result.Success(medical);
+    }
+
+
+    public Object getById(Medical medical) {
+        medicalMapper.selectByPrimaryKey(medical.getId());
         return Result.Success(medical);
     }
 }

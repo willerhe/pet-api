@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.petapi.dao.PrescriptionMapper">
+  <resultMap id="BaseResultMap" type="com.example.petapi.entity.Prescription">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="doctor_name" jdbcType="VARCHAR" property="doctorName" />
+    <result column="doctor_id" jdbcType="VARCHAR" property="doctorId" />
+    <result column="medical_no" jdbcType="VARCHAR" property="medicalNo" />
+    <result column="total" jdbcType="REAL" property="total" />
+    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="patient_id" jdbcType="VARCHAR" property="patientId" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, doctor_name, doctor_id, medical_no, total, is_deleted, remark, count, patient_name, 
+    patient_id, phone_number
+  </sql>
+  <select id="selectByExample" parameterType="com.example.petapi.entity.PrescriptionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from prescription
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from prescription
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from prescription
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.petapi.entity.PrescriptionExample">
+    delete from prescription
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.petapi.entity.Prescription">
+    insert into prescription (id, doctor_name, doctor_id, 
+      medical_no, total, is_deleted, 
+      remark, count, patient_name, 
+      patient_id, phone_number)
+    values (#{id,jdbcType=VARCHAR}, #{doctorName,jdbcType=VARCHAR}, #{doctorId,jdbcType=VARCHAR}, 
+      #{medicalNo,jdbcType=VARCHAR}, #{total,jdbcType=REAL}, #{isDeleted,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}, #{patientName,jdbcType=VARCHAR}, 
+      #{patientId,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.petapi.entity.Prescription">
+    insert into prescription
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="doctorName != null">
+        doctor_name,
+      </if>
+      <if test="doctorId != null">
+        doctor_id,
+      </if>
+      <if test="medicalNo != null">
+        medical_no,
+      </if>
+      <if test="total != null">
+        total,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="count != null">
+        count,
+      </if>
+      <if test="patientName != null">
+        patient_name,
+      </if>
+      <if test="patientId != null">
+        patient_id,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorName != null">
+        #{doctorName,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null">
+        #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalNo != null">
+        #{medicalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null">
+        #{total,jdbcType=REAL},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null">
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="patientName != null">
+        #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="patientId != null">
+        #{patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.petapi.entity.PrescriptionExample" resultType="java.lang.Long">
+    select count(*) from prescription
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update prescription
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctorName != null">
+        doctor_name = #{record.doctorName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctorId != null">
+        doctor_id = #{record.doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.medicalNo != null">
+        medical_no = #{record.medicalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.total != null">
+        total = #{record.total,jdbcType=REAL},
+      </if>
+      <if test="record.isDeleted != null">
+        is_deleted = #{record.isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.count != null">
+        count = #{record.count,jdbcType=INTEGER},
+      </if>
+      <if test="record.patientName != null">
+        patient_name = #{record.patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.patientId != null">
+        patient_id = #{record.patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phoneNumber != null">
+        phone_number = #{record.phoneNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update prescription
+    set id = #{record.id,jdbcType=VARCHAR},
+      doctor_name = #{record.doctorName,jdbcType=VARCHAR},
+      doctor_id = #{record.doctorId,jdbcType=VARCHAR},
+      medical_no = #{record.medicalNo,jdbcType=VARCHAR},
+      total = #{record.total,jdbcType=REAL},
+      is_deleted = #{record.isDeleted,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      count = #{record.count,jdbcType=INTEGER},
+      patient_name = #{record.patientName,jdbcType=VARCHAR},
+      patient_id = #{record.patientId,jdbcType=VARCHAR},
+      phone_number = #{record.phoneNumber,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.petapi.entity.Prescription">
+    update prescription
+    <set>
+      <if test="doctorName != null">
+        doctor_name = #{doctorName,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null">
+        doctor_id = #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalNo != null">
+        medical_no = #{medicalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null">
+        total = #{total,jdbcType=REAL},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null">
+        count = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="patientName != null">
+        patient_name = #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="patientId != null">
+        patient_id = #{patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.petapi.entity.Prescription">
+    update prescription
+    set doctor_name = #{doctorName,jdbcType=VARCHAR},
+      doctor_id = #{doctorId,jdbcType=VARCHAR},
+      medical_no = #{medicalNo,jdbcType=VARCHAR},
+      total = #{total,jdbcType=REAL},
+      is_deleted = #{isDeleted,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      count = #{count,jdbcType=INTEGER},
+      patient_name = #{patientName,jdbcType=VARCHAR},
+      patient_id = #{patientId,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

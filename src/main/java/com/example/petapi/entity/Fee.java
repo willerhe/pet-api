@@ -5,7 +5,7 @@ import java.util.Date;
 public class Fee {
     private String id;
 
-    private Float total;
+    private Float price;
 
     private Integer type;
 
@@ -17,6 +17,14 @@ public class Fee {
 
     private Integer isDeleted;
 
+    private String prescriptionId;
+
+    private String method;
+
+    private String remark;
+
+    private String medicalName;
+
     public String getId() {
         return id;
     }
@@ -25,12 +33,12 @@ public class Fee {
         this.id = id == null ? null : id.trim();
     }
 
-    public Float getTotal() {
-        return total;
+    public Float getPrice() {
+        return price;
     }
 
-    public void setTotal(Float total) {
-        this.total = total;
+    public void setPrice(Float price) {
+        this.price = price;
     }
 
     public Integer getType() {
@@ -71,5 +79,37 @@ public class Fee {
 
     public void setIsDeleted(Integer isDeleted) {
         this.isDeleted = isDeleted;
+    }
+
+    public String getPrescriptionId() {
+        return prescriptionId;
+    }
+
+    public void setPrescriptionId(String prescriptionId) {
+        this.prescriptionId = prescriptionId == null ? null : prescriptionId.trim();
+    }
+
+    public String getMethod() {
+        return method;
+    }
+
+    public void setMethod(String method) {
+        this.method = method == null ? null : method.trim();
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
+    }
+
+    public String getMedicalName() {
+        return medicalName;
+    }
+
+    public void setMedicalName(String medicalName) {
+        this.medicalName = medicalName == null ? null : medicalName.trim();
     }
 }

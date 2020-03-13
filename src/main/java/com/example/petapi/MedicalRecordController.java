@@ -16,6 +16,10 @@ public class MedicalRecordController {
     public JSONObject list(MedicalRecord medicalRecord) {
         return Result.Success(medicalRecordService.list(medicalRecord));
     }
+    @GetMapping("/v1/medicalRecord")
+    public JSONObject getById(MedicalRecord medicalRecord) {
+        return Result.Success(medicalRecordService.getById(medicalRecord));
+    }
 
 
     @PostMapping("/v1/medicalRecord")
