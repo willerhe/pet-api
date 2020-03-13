@@ -17,6 +17,11 @@ public class FeeController {
         return Result.Success(feeService.list(fee));
     }
 
+    @GetMapping("/v1/fee/medicals")
+    public JSONObject medicals(Fee fee) {
+        return Result.Success(feeService.medicals(fee));
+    }
+
 
     @PostMapping("/v1/fee")
     public JSONObject insert(Fee fee) {

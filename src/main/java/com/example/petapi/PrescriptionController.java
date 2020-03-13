@@ -22,6 +22,11 @@ public class PrescriptionController {
         return Result.Success(prescriptionService.list(prescription));
     }
 
+    @GetMapping("/v1/prescription")
+    public JSONObject getById(Prescription prescription) {
+        return Result.Success(prescriptionService.getById(prescription));
+    }
+
 
     @PostMapping("/v1/prescription")
     public JSONObject insert(Prescription prescription) {

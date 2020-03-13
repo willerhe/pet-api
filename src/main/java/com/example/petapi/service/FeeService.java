@@ -34,4 +34,11 @@ public class FeeService {
     public Object delete(Fee fee) {
         return Result.Success(fee);
     }
+
+    public Object medicals(Fee fee) {
+        FeeExample e = new FeeExample();
+        FeeExample.Criteria c = e.createCriteria();
+        c.andPrescriptionIdEqualTo(fee.getPrescriptionId());
+        return Result.Success(feeMapper.selectByExample(e));
+    }
 }

@@ -45,7 +45,7 @@ public class PrescriptionService {
 
     public Object store(PrescriptionDto prescription) {
         // 添加处方
-        String prescriptionId = UUID.randomUUID().toString();
+        final String prescriptionId = UUID.randomUUID().toString();
         prescription.setId(prescriptionId);
         prescription.setIsDeleted(0);
 
@@ -53,8 +53,9 @@ public class PrescriptionService {
         for (Fee fee : prescription.getFees()) {
             fee.setIsDeleted(0);
             fee.setId(UUID.randomUUID().toString());
+            fee.setPrescriptionId(prescription.getId());
             feeMapper.insert(fee);
-            fee.setPrescriptionId(prescriptionId);
+
         }
 
         // 更新medical
@@ -66,6 +67,11 @@ public class PrescriptionService {
         prescriptionMapper.insert(prescription);
 
 
+        return Result.Success(prescription);
+    }
+
+    public Object getById(Prescription prescription) {
+        prescription = prescriptionMapper.selectByPrimaryKey(prescription.getId());
         return Result.Success(prescription);
     }
 }
