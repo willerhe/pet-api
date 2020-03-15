@@ -78,7 +78,12 @@
 <!--               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
 <!--        </table>-->
 
-        <table tableName="fee" domainObjectName="Fee"
+<!--        <table tableName="fee" domainObjectName="Fee"-->
+<!--               enableInsert="true" enableUpdateByPrimaryKey="true"-->
+<!--               enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">-->
+<!--        </table>-->
+
+        <table tableName="article" domainObjectName="Article"
                enableInsert="true" enableUpdateByPrimaryKey="true"
                enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true">
         </table>
