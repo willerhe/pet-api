@@ -6,8 +6,10 @@ import com.example.petapi.entity.Goods;
 import com.example.petapi.entity.GoodsExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class GoodsService {
@@ -24,6 +26,8 @@ public class GoodsService {
     }
 
     public Object insert(Goods goods) {
+        goods.setId(UUID.randomUUID().toString());
+        goodsMapper.insert(goods);
         return Result.Success(goods);
     }
 
@@ -32,6 +36,7 @@ public class GoodsService {
     }
 
     public Object delete(Goods goods) {
+        goodsMapper.deleteByPrimaryKey(goods.getId());
         return Result.Success(goods);
     }
 }

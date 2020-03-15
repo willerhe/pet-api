@@ -19,7 +19,7 @@ public class GoodsController {
 
 
     @PostMapping("/v1/goods")
-    public JSONObject insert(Goods goodsRecord) {
+    public JSONObject insert(@RequestBody Goods goodsRecord) {
         return Result.Success(goodsService.insert(goodsRecord));
     }
 
