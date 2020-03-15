@@ -453,6 +453,76 @@ public class ArticleExample {
             addCriterion("cover_url not between", value1, value2, "coverUrl");
             return (Criteria) this;
         }
+
+        public Criteria andSampleIsNull() {
+            addCriterion("sample is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleIsNotNull() {
+            addCriterion("sample is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleEqualTo(String value) {
+            addCriterion("sample =", value, "sample");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleNotEqualTo(String value) {
+            addCriterion("sample <>", value, "sample");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleGreaterThan(String value) {
+            addCriterion("sample >", value, "sample");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleGreaterThanOrEqualTo(String value) {
+            addCriterion("sample >=", value, "sample");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleLessThan(String value) {
+            addCriterion("sample <", value, "sample");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleLessThanOrEqualTo(String value) {
+            addCriterion("sample <=", value, "sample");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleLike(String value) {
+            addCriterion("sample like", value, "sample");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleNotLike(String value) {
+            addCriterion("sample not like", value, "sample");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleIn(List<String> values) {
+            addCriterion("sample in", values, "sample");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleNotIn(List<String> values) {
+            addCriterion("sample not in", values, "sample");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleBetween(String value1, String value2) {
+            addCriterion("sample between", value1, value2, "sample");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleNotBetween(String value1, String value2) {
+            addCriterion("sample not between", value1, value2, "sample");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -2,6 +2,7 @@ package com.example.petapi;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.petapi.entity.Article;
+import com.example.petapi.entity.ArticleDto;
 import com.example.petapi.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +14,10 @@ public class ArticleController {
     ArticleService articleService;
 
     @GetMapping("/v1/articles")
-    public JSONObject list(Article article) {
+    public JSONObject list(ArticleDto article) {
         return Result.Success(articleService.list(article));
     }
+
     @GetMapping("/v1/article")
     public JSONObject getById(Article article) {
         return Result.Success(articleService.getById(article));

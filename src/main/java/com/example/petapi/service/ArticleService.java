@@ -3,6 +3,7 @@ package com.example.petapi.service;
 import com.example.petapi.Result;
 import com.example.petapi.dao.ArticleMapper;
 import com.example.petapi.entity.Article;
+import com.example.petapi.entity.ArticleDto;
 import com.example.petapi.entity.ArticleExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +18,16 @@ public class ArticleService {
     @Autowired
     ArticleMapper articleMapper;
 
-    public Object list(Article article) {
+    public Object list(ArticleDto article) {
         ArticleExample e = new ArticleExample();
         ArticleExample.Criteria c = e.createCriteria();
+        String unionCode = ",";
+        if (article.getKind() != null && article.getKind().equals("汪星人课堂")) {
+            unionCode = "、";
+        }
+        if (article.getTags() != null && !article.getTags().equals("")) {
+            c.andTagsLike("%" + article.getTags() + unionCode + "%");
+        }
 
         List<Article> list = articleMapper.selectByExample(e);
         return Result.Success(list);
@@ -40,6 +48,7 @@ public class ArticleService {
     }
 
     public Object delete(Article article) {
+        articleMapper.deleteByPrimaryKey(article.getId());
         return Result.Success(article);
     }
 

@@ -11,6 +11,8 @@ public class Article {
 
     private String coverUrl;
 
+    private String sample;
+
     private String content;
 
     public String getId() {
@@ -51,6 +53,14 @@ public class Article {
 
     public void setCoverUrl(String coverUrl) {
         this.coverUrl = coverUrl == null ? null : coverUrl.trim();
+    }
+
+    public String getSample() {
+        return sample;
+    }
+
+    public void setSample(String sample) {
+        this.sample = sample == null ? null : sample.trim();
     }
 
     public String getContent() {
